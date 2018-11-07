@@ -1,3 +1,5 @@
 import $ from 'jquery';
 
-$('body').text('hello')
+$('p').on('click', function() {
+    $(this).css({background: 'red'})
+})
