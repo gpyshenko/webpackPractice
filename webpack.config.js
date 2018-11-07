@@ -1,5 +1,5 @@
 const path = require('path');
-const NunjucksWebpackPlugin =  require("nunjucks-webpack-plugin");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
     src: path.join(__dirname, 'src'),
@@ -8,28 +8,19 @@ const PATHS = {
 
 module.exports = {
     entry: {
+        vendors: './src/scripts/vendors.js',
         main: './src/scripts/index.js'
     },
     output: {
         path: path.resolve(__dirname, PATHS.dist),
-        filename: 'bundle.js'
+        filename: 'scripts/[name].js'
     },
-     module: {
-        loaders: [
-            {
-                test: /\.(njk|nunjucks)$/,
-                loader: 'nunjucks-loader'
-            }
-        ]
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
     },
     plugins: [
-        new NunjucksWebpackPlugin({
-            templates: [
-                {
-                    from: `${PATHS.src}index.njk`,
-                    to: "index.html"
-                }
-            ]
-        })
+        new HtmlWebpackPlugin()
     ]
 }
