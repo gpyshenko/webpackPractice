@@ -1,11 +1,11 @@
 const path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const PATHS = {
     src: path.join(__dirname, 'src'),
     dist: path.join(__dirname, 'dist')
 };
-
 
 function createTemplates(files) {
     var arr = []
@@ -45,14 +45,27 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 10000,
+                            name: 'images/[name].[ext]'
+                        }
+                    },
+                    'img-loader'
+                ]
             }
         ]
     },
     devServer: {
-        contentBase: PATHS.dist,
-        hot: true
+        contentBase: PATHS.src
     },
     plugins: [
-        ...createTemplates(['index', 'contacts'])
+        ...createTemplates(['index', 'contacts']),
+        new CopyWebpackPlugin([{ from: `${PATHS.src}/assets/`, to: `${PATHS.dist}/assets/`}])
     ]
 }

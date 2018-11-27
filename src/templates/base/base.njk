@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "templates/base/head.njk" %}
+</head>
+<body class="flexColumn">
+    {% include "templates/blocks/header/header.njk" %}
+    {% block main %}{% endblock %}
+    {% include "templates/blocks/footer/footer.njk" %}
+</body>
+</html>
