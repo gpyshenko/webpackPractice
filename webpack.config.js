@@ -8,14 +8,12 @@ const PATHS = {
 };
 
 function createTemplates(files) {
-    var arr = []
-    files.forEach(file => {
-        arr.push(new HtmlWebpackPlugin({
+    return files.map(file => {
+        return new HtmlWebpackPlugin({
             filename: `${file}.html`,
             template: PATHS.src + `/${file}.njk`
-        }))
+        })
     });
-    return arr;
 }
 
 module.exports = {
@@ -28,6 +26,9 @@ module.exports = {
         path: path.resolve(__dirname, PATHS.dist),
         filename: 'scripts/[name].js'
     },
+    devServer: {
+        contentBase: PATHS.dist
+    },
     optimization: {
         splitChunks: {
             chunks: 'all'
@@ -36,6 +37,15 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.js$/,
+                use: [
+                    {
+                        loader: 'babel-loader'
+                    }
+                ],
+                exclude: /node_modules/
+            },
+            {
                 test: /\.(njk|nunjucks)$/,
                 use: [
                     {
@@ -43,6 +53,20 @@ module.exports = {
                         query: {
                             root: [path.resolve(__dirname, PATHS.src)]
                         }
+                    }
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'postcss-loader'
                     }
                 ]
             },
@@ -61,9 +85,7 @@ module.exports = {
             }
         ]
     },
-    devServer: {
-        contentBase: PATHS.src
-    },
+
     plugins: [
         ...createTemplates(['index', 'contacts']),
         new CopyWebpackPlugin([{ from: `${PATHS.src}/assets/`, to: `${PATHS.dist}/assets/`}])
