@@ -3,10 +3,21 @@ import path from 'path'
 
 const server = express()
 
-const staticMiddleware = express.static('dist')
+const webpack = require('webpack');
+const config = require('../../webpack/webpack.dev')
+const compiler = webpack(config);
 
-server.use(staticMiddleware)
+const webpackDevMiddleware = require('webpack-dev-middleware')(compiler, config.devServer);
 
-server.listen(8080, () => {
-    console.log('Server is listening')
+const webpackHotMiddleware = require('webpack-hot-middleware')(compiler);
+
+server.use(webpackDevMiddleware);
+server.use(webpackHotMiddleware);
+
+const staticMiddleware = express.static('dist');
+
+server.use(staticMiddleware);
+
+server.listen(3000, () => {
+    console.log(`Server is listening on localhost:3000`)
 })

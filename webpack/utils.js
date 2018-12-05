@@ -9,7 +9,7 @@ const PATHS = {
 function createTemplates(files) {
     return files.map(file => {
         return new HtmlWebpackPlugin({
-            filename: `${file}.njk`,
+            filename: `${file}.html`,
             template: PATHS.src + `/${file}.njk`
         })
     });

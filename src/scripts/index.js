@@ -1,3 +1,4 @@
+require('webpack-hot-middleware/client?reload=true');
 require('../styles/card.css');
 require('../styles/info.css');
 

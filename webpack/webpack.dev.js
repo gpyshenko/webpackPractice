@@ -17,6 +17,7 @@ module.exports = {
     },
     devServer: {
         compress: true,
+        // hot: true,
         contentBase: PATHS.dist
     },
     optimization: {
@@ -77,7 +78,7 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin,
+        new webpack.HotModuleReplacementPlugin(),
         ...createTemplates(['index', 'contacts']),
         new CopyWebpackPlugin([{ from: `${PATHS.src}/assets/`, to: `${PATHS.dist}/assets/`}])
     ]
