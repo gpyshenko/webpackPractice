@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --env prod",
-    "dev": "webpack-dev-server --env dev --watch --open"
+    "dev": "webpack-dev-server --env dev --watch --open",
+    "serv": "node src/server/server.js"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "optimize-css-assets-webpack-plugin": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
+    "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.4",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^1.0.1",
