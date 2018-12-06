@@ -1,28 +1,29 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const { PATHS, createTemplates } = require('./utils');
+const { PATHS, createTemplates, entryFiles } = require('./utils');
 
 module.exports = {
     mode: 'development',
-    entry: {
-        vendors: './src/scripts/vendors.js',
-        main: './src/scripts/index.js'
-    },
+    entry: entryFiles,
     output: {
         path: path.resolve(__dirname, PATHS.dist),
         filename: 'scripts/[name].js'
     },
     devServer: {
         compress: true,
-        // hot: true,
         contentBase: PATHS.dist
     },
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks: 'all',
+            cacheGroups: {
+                vendor: {
+                    name: "vendor",
+                    chunks: "initial",
+                    minChunks: 2
+                }
+            }
         }
     },
     module: {
@@ -54,7 +55,10 @@ module.exports = {
                         loader: 'style-loader'
                     },
                     {
-                        loader: 'css-loader'
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true
+                        }
                     },
                     {
                         loader: 'postcss-loader'
@@ -78,8 +82,10 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         ...createTemplates(['index', 'contacts']),
-        new CopyWebpackPlugin([{ from: `${PATHS.src}/assets/`, to: `${PATHS.dist}/assets/`}])
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+        })
     ]
 }

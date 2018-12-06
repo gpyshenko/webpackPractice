@@ -1,23 +1,32 @@
 const path = require('path');
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 
-const {PATHS, createTemplates} = require('./utils');
+const { PATHS, createTemplates, entryFiles} = require('./utils');
+
+const cleanOptions = { root: path.resolve(__dirname, '..'), verbose: true }
 
 module.exports = {
     mode: 'production',
-    entry: {
-        vendors: './src/scripts/vendors.js',
-        main: './src/scripts/index.js'
-    },
+    entry: entryFiles,
     output: {
         path: path.resolve(__dirname, PATHS.dist),
         filename: 'scripts/[name].js'
     },
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks: 'all',
+            cacheGroups: {
+                vendor: {
+                    name: "vendor",
+                    chunks: "initial",
+                    minChunks: 2
+                }
+            }
         },
         minimizer: [
             new OptimizeCSSAssetsPlugin()
@@ -76,10 +85,16 @@ module.exports = {
     },
 
     plugins: [
+        new CleanWebpackPlugin('dist', cleanOptions),
         ...createTemplates(['index', 'contacts']),
         new MiniCssExtractPlugin({
             filename: 'styles/[name].css'
         }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+        }),
+        new MinifyPlugin(),
         new CopyWebpackPlugin([{ from: `${PATHS.src}/assets/`, to: `${PATHS.dist}/assets/`}])
     ]
 }

@@ -9,13 +9,17 @@
     "serv": "nodemon src/server/server.js"
   },
   "dependencies": {
-    "jquery": "^3.3.1"
+    "babel-minify": "^0.5.0",
+    "jquery": "^3.3.1",
+    "webpack-merge": "^4.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
     "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.4",
+    "babel-minify-webpack-plugin": "^0.3.1",
+    "clean-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^1.0.1",
     "css-mqpacker": "^7.0.0",

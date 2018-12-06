@@ -15,7 +15,13 @@ function createTemplates(files) {
     });
 }
 
+const entryFiles = {
+    vendors: './src/scripts/other.js',
+    main: './src/scripts/index.js'
+}
+
 module.exports = {
     PATHS,
-    createTemplates
+    createTemplates,
+    entryFiles
 }
