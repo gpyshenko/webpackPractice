@@ -9,7 +9,7 @@ module.exports = function () {
                             loader: "url-loader",
                             options: {
                                 limit: 10000,
-                                name: 'images/[name].[ext]'
+                                name: 'img/[name].[ext]'
                             }
                         },
                         'img-loader'

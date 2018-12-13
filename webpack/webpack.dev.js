@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 
 const { PATHS } = require('./utils');
@@ -9,7 +10,7 @@ const devConfig = merge([
         devServer: {
             compress: true,
             overlay: true,
-            contentBase: PATHS.dist
+            contentBase: PATHS.src
         }
     }
 ])

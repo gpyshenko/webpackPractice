@@ -22,14 +22,13 @@ const common = function (env) {
                 cacheGroups: {
                     vendor: {
                         name: "vendor",
-                        chunks: "initial",
-                        minChunks: 2
+                        minChunks: 1
                     }
                 }
             }
         },
         plugins: [
-            ...createTemplates(['index', 'contacts']),
+            ...createTemplates(['index']),
             new webpack.ProvidePlugin({
                 $: 'jquery',
                 jQuery: 'jquery',

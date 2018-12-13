@@ -1,6 +1,6 @@
 require('../styles/card.css');
 require('../styles/info.css');
-require('./other');
+import {num, click} from './other';
 
 let asd = 3;
 console.log(`Asd ${asd}`);
@@ -13,3 +13,6 @@ let something = function(someArgument) {
     console.log(result(someArgument))
 }
 something(2)
+console.log(num)
+
+click()
