@@ -1,3 +1,3 @@
 $('p').on('click', function() {
-    $(this).css({fontSize: '30px'}) 
+    $(this).css({fontSize: '20px'}) 
 })

@@ -1,91 +1,36 @@
 const path = require('path');
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 
-const { PATHS, createTemplates, entryFiles } = require('./utils');
+const { PATHS } = require('./utils');
+const common = require('./webpack.common');
+const nunjucks = require('./loaders/nunjucks');
+const js = require('./loaders/js');
+const css = require('./loaders/css');
+const images = require('./loaders/images');
 
-module.exports = {
-    mode: 'development',
-    entry: entryFiles,
-    output: {
-        path: path.resolve(__dirname, PATHS.dist),
-        filename: 'scripts/[name].js'
-    },
-    devServer: {
-        compress: true,
-        contentBase: PATHS.dist
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-            cacheGroups: {
-                vendor: {
-                    name: "vendor",
-                    chunks: "initial",
-                    minChunks: 2
-                }
-            }
+const devConfig = merge([
+    {
+        mode: 'development',
+        output: {
+            path: path.resolve(__dirname, PATHS.dist),
+            filename: 'scripts/[name].js'
+        },
+        devServer: {
+            compress: true,
+            overlay: true,
+            contentBase: PATHS.dist
         }
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                use: [
-                    {
-                        loader: 'babel-loader'
-                    }
-                ],
-                exclude: '/node_modules/'
-            },
-            {
-                test: /\.(njk|nunjucks)$/,
-                use: [
-                    {
-                        loader: 'nunjucks-isomorphic-loader',
-                        query: {
-                            root: [path.resolve(__dirname, PATHS.src)]
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: 'style-loader'
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader'
-                    }
-                ]
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/,
-                use: [
-                    {
-                        loader: "url-loader",
-                        options: {
-                            limit: 10000,
-                            name: 'images/[name].[ext]'
-                        }
-                    },
-                    'img-loader'
-                ]
-            }
-        ]
-    },
+    }
+])
 
-    plugins: [
-        ...createTemplates(['index', 'contacts']),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-        })
-    ]
+module.exports = function(env) {
+    return merge([
+        common,
+        devConfig,
+        nunjucks(PATHS),
+        css(env),
+        js(),
+        images()
+    ])
 }
