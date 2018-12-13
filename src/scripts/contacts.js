@@ -1,3 +1,1 @@
-$('p').on('click', function () {
-    $(this).css({ background: 'red' })
-})
+console.log('Contacts page ')

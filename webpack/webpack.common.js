@@ -44,6 +44,6 @@ module.exports = function (env) {
         nunjucks(PATHS),
         css(env),
         js(),
-        images()
+        images(env)
     ])
 }

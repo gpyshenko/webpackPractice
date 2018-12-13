@@ -1,6 +1,6 @@
 require('../styles/card.css');
 require('../styles/info.css');
-require('./contacts')
+require('./other');
 
 let asd = 3;
 console.log(`Asd ${asd}`);

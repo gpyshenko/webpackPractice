@@ -1,4 +1,4 @@
 module.exports = {
-    vendors: './src/scripts/other.js',
-    main: './src/scripts/index.js'
+    index: './src/scripts/index.js',
+    contacts: './src/scripts/contacts.js'
 }
