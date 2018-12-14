@@ -8,12 +8,13 @@ module.exports = function (env) {
                     test: /\.css$/,
                     use: [
                         {
-                            loader: env === 'dev' ? 'style-loader' : MiniCssExtractPlugin.loader
+                            loader: (env === 'dev') ? 'style-loader' : MiniCssExtractPlugin.loader
                         },
                         {
                             loader: 'css-loader',
                             options: {
-                                sourceMap: env === 'dev' ? true : false
+                                url: false,
+                                sourceMap: (env === 'dev')
                             }
                         },
                         {
@@ -24,7 +25,10 @@ module.exports = function (env) {
             ],
         },
         plugins: [
-            new MiniCssExtractPlugin({ filename: 'styles/[name].css' }),
+            new MiniCssExtractPlugin({ 
+                filename: (env === 'dev') ? 'styles/[name].css' : 'styles/[name].[hash].css' ,
+                // chunkFilename: (env === 'dev') ? 'styles/[name].css' : 'styles/[name].[hash].css' 
+            }),
         ],
     };
 };

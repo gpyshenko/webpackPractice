@@ -1,3 +1,4 @@
+require('../styles/blocks/header.css');
 require('../styles/card.css');
 require('../styles/info.css');
 import {num, click} from './other';

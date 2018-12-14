@@ -14,25 +14,31 @@ const common = function (env) {
         entry,
         output: {
             path: path.resolve(__dirname, PATHS.dist),
-            filename: env === 'prod' ? 'scripts/[name].[hash].js' : 'scripts/[name].js'
+            filename: env === 'prod' ? 'scripts/[name].[hash].js' : 'scripts/[name].js',
         },
         optimization: {
             splitChunks: {
                 chunks: 'all',
                 cacheGroups: {
                     vendor: {
-                        name: "vendor",
+                        test: /\.js$/,
+                        name: 'vendor',
                         minChunks: 1
+                    },
+                    styles: {
+                        name: 'styles',
+                        test: /\.css$/
                     }
                 }
             }
         },
         plugins: [
-            ...createTemplates(['index']),
+            ...createTemplates(['index','contacts']),
             new webpack.ProvidePlugin({
                 $: 'jquery',
                 jQuery: 'jquery',
-            })
+            }),
+            new webpack.HashedModuleIdsPlugin()
         ]
     }
 }

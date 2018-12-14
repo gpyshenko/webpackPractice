@@ -1,0 +1,13 @@
+@import "blocks/header-inner/header-asd/header-asd.css";
+
+.contacts {
+    width: 100px;
+    height: 100px;
+    background-color: #333;
+    &-img {
+        width: 200px;
+        height: 200px;
+        background: url('/assets/img/about/about.jpg');
+        background-size: cover;
+    }
+}
