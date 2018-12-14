@@ -14,7 +14,7 @@ const common = function (env) {
         entry,
         output: {
             path: path.resolve(__dirname, PATHS.dist),
-            filename: env === 'prod' ? 'scripts/[name].[hash].js' : 'scripts/[name].js',
+            filename: (env === 'prod') ? 'scripts/[name].[hash].js' : 'scripts/[name].js',
         },
         optimization: {
             splitChunks: {

@@ -1,7 +1,7 @@
 const fileLoader = {
     loader: 'file-loader',
     options: {
-        name: '../assets/img/[name].[ext]',
+        name: '[name].[ext]',
         plugins: [
             require('imagemin-mozjpeg')({
                 progressive: true,
