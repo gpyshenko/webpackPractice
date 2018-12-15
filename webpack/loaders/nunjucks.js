@@ -8,9 +8,12 @@ module.exports = function(PATHS) {
                     test: /\.(njk|nunjucks)$/,
                     use: [
                         {
-                            loader: 'nunjucks-isomorphic-loader',
-                            query: {
-                                root: [path.resolve(__dirname, PATHS.src)]
+                            loader: 'html-loader',
+                        },
+                        {
+                            loader: 'nunjucks-html-loader',
+                            options: {
+                                searchPaths: [path.resolve(__dirname, PATHS.src)]
                             }
                         },
                     ],

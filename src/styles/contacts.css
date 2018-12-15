@@ -1,3 +1,4 @@
+@import "blocks/header.css";
 @import "blocks/header-inner/header-asd/header-asd.css";
 
 .contacts {
@@ -7,7 +8,7 @@
     &-img {
         width: 200px;
         height: 200px;
-        background: url('/assets/img/about/about.jpg');
+        background: url('../assets/img/about/about.jpg');
         background-size: cover;
     }
 }

@@ -1,4 +1,4 @@
-{% extends "templates/base/base.njk" %}
+{% extends "./templates/base/base.njk" %}
 {% block main %}
     {% set arr = ['asd','123','qsw','1s'] %}
     {% for item in arr %}
@@ -6,5 +6,6 @@
     {% endfor %}
     <div class="card">
         <div class="card-inner">Box</div>
+        <img src="assets/img/about/about.jpg" alt="">
     </div>
 {% endblock %}

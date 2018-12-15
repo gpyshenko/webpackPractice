@@ -21,7 +21,7 @@ const prodConfig = merge([
         plugins: [
             new CleanWebpackPlugin('dist', cleanOptions),
             new MinifyPlugin(),
-            new CopyWebpackPlugin([{ from: `${PATHS.src}/assets/`, to: `${PATHS.dist}/assets/` }])
+            // new CopyWebpackPlugin([{ from: `${PATHS.src}/assets/`, to: `${PATHS.dist}/assets/` }])
         ]
     }
 ])

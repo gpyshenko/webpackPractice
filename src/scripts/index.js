@@ -1,7 +1,9 @@
-require('../styles/blocks/header.css');
+// require('../index.njk');
+// tpl.render({})
 require('../styles/card.css');
 require('../styles/info.css');
 import {num, click} from './other';
+
 
 let asd = 3;
 console.log(`Asd ${asd}`);

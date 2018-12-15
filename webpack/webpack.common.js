@@ -14,7 +14,7 @@ const common = function (env) {
         entry,
         output: {
             path: path.resolve(__dirname, PATHS.dist),
-            filename: (env === 'prod') ? 'scripts/[name].[hash].js' : 'scripts/[name].js',
+            filename: (env === 'prod') ? 'scripts/[name].[hash].js' : 'scripts/[name].js'
         },
         optimization: {
             splitChunks: {
@@ -39,7 +39,12 @@ const common = function (env) {
                 jQuery: 'jquery',
             }),
             new webpack.HashedModuleIdsPlugin()
-        ]
+        ],
+        resolve: {
+            alias: {
+                'Img': path.resolve(PATHS.src, '/assets/img')
+            }
+        }
     }
 }
 
