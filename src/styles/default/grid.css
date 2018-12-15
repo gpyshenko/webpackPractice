@@ -1,0 +1,51 @@
+.container, .bigContainer {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.bigContainer {
+    max-width: 1680px;
+}
+
+.flexRow,
+.flexColumn,
+.flexWrap,
+.flexGrid,
+.flexRow-C,
+.flexColumn-C {
+    display: flex;
+}
+
+.flexInline {
+    display: inline-flex;
+}
+
+.flexColumn, .flexColumn-C {
+    flex-direction: column;
+}
+
+.flexWrap, .flexGrid {
+    flex-wrap: wrap;
+}
+
+.flexRow-C, .flexColumn-C {
+    justify-content: center;
+    align-items: center;
+}
+
+.flexGrid {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.flexCell {
+    padding-right: 15px;
+    padding-left: 15px;
+}

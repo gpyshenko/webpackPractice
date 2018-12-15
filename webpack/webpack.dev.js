@@ -8,10 +8,14 @@ const devConfig = merge([
     {
         mode: 'development',
         devServer: {
+            hot: true,
             compress: true,
             overlay: true,
             contentBase: PATHS.src
-        }
+        },
+        plugins: [
+            new webpack.HotModuleReplacementPlugin()
+        ]
     }
 ])
 

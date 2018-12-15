@@ -1,0 +1,61 @@
+@font-face {
+	font-family: "icons";
+	src: url("../assets/fonts/iconfonts/icons.woff2") format("woff2"),
+		url("../assets/fonts/iconfonts/icons.woff") format("woff");
+}
+[class^="icon-"], [class*="icon-"] {
+	font-family: "icons";
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+    line-height: 1;
+	text-decoration: none;
+    text-transform: none;
+}
+
+
+.icon-angle-down::before {
+	content: "\E001";
+}
+
+.icon-arrow-right::before {
+	content: "\E002";
+}
+
+.icon-check-big::before {
+	content: "\E003";
+}
+
+.icon-cross::before {
+	content: "\E004";
+}
+
+.icon-eye::before {
+	content: "\E005";
+}
+
+.icon-facebook::before {
+	content: "\E006";
+}
+
+.icon-ok::before {
+	content: "\E007";
+}
+
+.icon-question::before {
+	content: "\E008";
+}
+
+.icon-twitter::before {
+	content: "\E009";
+}
+
+.icon-vk::before {
+	content: "\E00A";
+}
+
+.icon-youtube::before {
+	content: "\E00B";
+}

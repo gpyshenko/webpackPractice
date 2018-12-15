@@ -1,0 +1,49 @@
+.overflow {
+    overflow: hidden;
+}
+
+.backdrop, .backdropContainer, .backdropItem {
+    display: none;
+    transition: .3s ease-out;
+    box-sizing: border-box;
+}
+
+.backdrop, .backdropContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.backdrop, .backdropItem {
+    opacity: 0;
+}
+
+.backdrop {
+    z-index: 4;
+    height: 150vh;
+    background-color: rgba(0,0,0,.7);
+}
+
+.backdrop.active {
+    opacity: .7;
+}
+
+.backdropContainer {
+    z-index: 5;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 50px 0;
+    overflow: auto;
+}
+
+.backdropItem {
+    margin: auto;
+    transform: translateY(20px);
+}
+
+.backdropItem.active {
+    opacity: 1;
+    transform: translateY(0);
+}

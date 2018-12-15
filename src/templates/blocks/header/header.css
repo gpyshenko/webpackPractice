@@ -1,0 +1,112 @@
+header {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+}
+
+.header {
+    position: relative;
+    padding: 0 30px;
+    background-color: #fff;
+    box-shadow: 0 0 6px rgba(0,0,0,.1);
+    &-logo {
+        flex-shrink: 0;
+        padding: 14px 0;
+        margin-right: 29px;
+    }
+    &-menu {
+        align-items: center;
+        width: 100%;
+    }
+    &-nav, &-phones {
+        height: 100%;
+    }
+    &-phones {
+        margin-left: auto;
+    }
+    &-dropdown {
+        position: absolute;
+        top: 100%;
+        display: none;
+        background-color: #fff;
+        border: 1px solid var(--whiteSmoke);
+        opacity: 0;
+        transition: var(--transitionDefault);
+        &.active {
+            opacity: 1;
+        }
+    }
+    &-burger {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .header {
+        padding-right: 15px;
+        padding-left: 15px;
+        &-logo {
+            margin-right: 30px;
+        }
+    }
+}
+
+@media (max-width: 1120px) {
+    .header {
+        justify-content: space-between;
+        &-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+            width: 100%;
+            height: auto;
+            padding: 15px 0;
+            background-color: #fff;
+            opacity: 0;
+            transition: var(--transitionDefault);
+            overflow: auto;
+            &.active {
+                opacity: 1;
+                box-shadow: 0 0 6px rgba(0,0,0,.1);
+            }
+        }
+        &-nav, &-phones {
+            height: auto;
+        }
+        &-dropdown {
+            position: static;
+            border: none;
+            opacity: 1;
+        }
+        &-burger {
+            flex-shrink: 0;
+            display: flex;
+            margin-left: 15px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .header {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+@media (max-width: 575px) {
+    header {
+        top: 0;
+        background-color: #fff;
+        box-shadow: 0 0 6px rgba(0,0,0,.1);
+    }
+
+    .header {
+        position: static;
+        padding-right: 0;
+        padding-left: 0;
+        box-shadow: none;
+    }
+}

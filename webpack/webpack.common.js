@@ -7,6 +7,7 @@ const entry = require('./entry');
 const nunjucks = require('./loaders/nunjucks');
 const css = require('./loaders/css');
 const js = require('./loaders/js');
+const fonts = require('./loaders/fonts');
 const images = require('./loaders/images');
 
 const common = function (env) {
@@ -21,7 +22,7 @@ const common = function (env) {
                 chunks: 'all',
                 cacheGroups: {
                     vendor: {
-                        test: /\.js$/,
+                        test: /[\\/]node_modules[\\/]/,
                         name: 'vendor',
                         minChunks: 1
                     },
@@ -39,12 +40,7 @@ const common = function (env) {
                 jQuery: 'jquery',
             }),
             new webpack.HashedModuleIdsPlugin()
-        ],
-        resolve: {
-            alias: {
-                'Img': path.resolve(PATHS.src, '/assets/img')
-            }
-        }
+        ]
     }
 }
 
@@ -54,6 +50,7 @@ module.exports = function (env) {
         nunjucks(PATHS),
         css(env),
         js(),
+        fonts(env),
         images(env)
     ])
 }

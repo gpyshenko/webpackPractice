@@ -1,0 +1,23 @@
+:root {
+    --mainColor: #333;
+    --mainFont: "PFDasGroteskPro", sans-serif;
+    --arial: "Arial", sans-serif;
+
+    --persimmon: #eb6801;
+    --pumpkin: #ff801b;
+    --lightGrey: #d7d7d7;
+    --pinkSwan: #b6b6b6;
+    --silver: #c3c3c3;
+    --whiteSmoke: #f4f4f4;
+    --kilamanjaro: #3c3836;
+    --gainsboro: #e1e1e1;
+    --freeSpeechRed: #cc1212;
+
+    --borderRadiusDefault: 4px;
+
+    --shadowDefault: 0 0 8px rgba(0,0,0,.1);
+    --shadowBig: 0 0 12px rgba(0,0,0,.1);
+    --shadowHover: 0 0 24px rgba(0,0,0,.15);
+
+    --transitionDefault: .2s ease-out;
+}
