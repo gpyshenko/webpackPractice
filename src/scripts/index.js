@@ -1,12 +1,11 @@
 import '../index.njk';
 import '../styles/index-page.css';
 import header from '../templates/blocks/header/header';
-import {bdModal} from './vendors/modals';
+import bdModal from './vendors/modals';
 import './vendors/modal.css';
 import {num, click} from './other';
 
-bdModal({})
-// header
+bdModal()
 
 let asd = 3;
 console.log(`Asd ${asd}`);

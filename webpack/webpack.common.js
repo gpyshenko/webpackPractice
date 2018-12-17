@@ -10,6 +10,8 @@ const js = require('./loaders/js');
 const fonts = require('./loaders/fonts');
 const images = require('./loaders/images');
 
+const settings = require('../settings.json');
+
 const common = function (env) {
     return {
         entry,
@@ -34,7 +36,7 @@ const common = function (env) {
             }
         },
         plugins: [
-            ...createTemplates(['index','contacts']),
+            ...createTemplates(settings.pages),
             new webpack.ProvidePlugin({
                 $: 'jquery',
                 jQuery: 'jquery',

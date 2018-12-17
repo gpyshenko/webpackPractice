@@ -275,6 +275,4 @@ function bdModal(options) {
     return new Init(options)
 }
 
-module.exports = {
-    bdModal
-}
+module.exports = bdModal
