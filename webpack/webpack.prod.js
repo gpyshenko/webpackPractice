@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -18,7 +19,8 @@ const prodConfig = merge([
         },
         plugins: [
             new CleanWebpackPlugin('dist', cleanOptions),
-            new MinifyPlugin()
+            new MinifyPlugin(),
+            new webpack.ProgressPlugin()
         ]
     }
 ])
