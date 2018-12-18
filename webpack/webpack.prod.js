@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const common = require('./webpack.common');
 
@@ -19,7 +20,8 @@ const prodConfig = merge([
         },
         plugins: [
             new CleanWebpackPlugin('dist', cleanOptions),
-            new MinifyPlugin()
+            new MinifyPlugin(),
+            new BundleAnalyzerPlugin()
         ]
     }
 ])
