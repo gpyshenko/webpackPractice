@@ -36,6 +36,7 @@ const common = function (env) {
             }
         },
         plugins: [
+            new webpack.ProgressPlugin(),
             ...createTemplates(settings.pages),
             new webpack.ProvidePlugin({
                 $: 'jquery',

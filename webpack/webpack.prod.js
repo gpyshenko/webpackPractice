@@ -19,8 +19,7 @@ const prodConfig = merge([
         },
         plugins: [
             new CleanWebpackPlugin('dist', cleanOptions),
-            new MinifyPlugin(),
-            new webpack.ProgressPlugin()
+            new MinifyPlugin()
         ]
     }
 ])
