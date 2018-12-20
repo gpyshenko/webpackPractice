@@ -23,10 +23,12 @@ const common = function (env) {
             splitChunks: {
                 chunks: 'all',
                 cacheGroups: {
-                    vendor: {
+                    vendors: {
                         test: /[\\/]node_modules[\\/]/,
-                        name: 'vendor',
-                        minChunks: 1
+                        name(module) {
+                            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                            return `npm.${packageName.replace('@', '')}`;
+                        }
                     },
                     styles: {
                         name: 'styles',
