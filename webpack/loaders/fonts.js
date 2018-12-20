@@ -3,7 +3,7 @@ module.exports = function (env) {
         module: {
             rules: [
                 {
-                    test: /\.(woff|woff2)$/,
+                    test: /\.(svg|eot|ttf|woff|woff2)$/,
                     use: {
                         loader: 'file-loader',
                         options: {
